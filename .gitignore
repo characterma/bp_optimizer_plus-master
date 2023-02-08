@@ -1,0 +1,8 @@
+
+*.pyc
+
+log/*
+
+.vscode/
+
+personal_model_optimizer/data/*.csv

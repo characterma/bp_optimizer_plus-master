@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package pyserver;
+
+option java_multiple_files = true;
+option java_package = "org.jpdna.grpchello";
+option java_outer_classname = "PyServerProto";
+
+// 创建服务
+service OptimizerGreeter {
+  rpc ANBP (OptimizerBPRequest) returns (OptimizerBPReply) {}
+}
+
+// anbp 请求参数
+message OptimizerBPRequest {
+  string wearUserId = 1; //用户的 wear_user_id
+  string optStatus = 2; //优化类型, '0', 代表首次优化, '1', 代表新增数据的优化, '2',代表删除之前的提交数据,需重新优化
+}
+
+// anbp 返回参数
+message OptimizerBPReply {
+  string status = 1; //状态码 0代表正常接受, 1代表
+}
+//切换到grpc/proto目录下面: python -m grpc_tools.protoc -I=./ --python_out=. --grpc_python_out=. anbpOptimizer.proto
+//直接在项目根目录下: python -m grpc_tools.protoc -I=./grpc/proto --python_out=./grpc/proto --grpc_python_out=./grpc/proto anbpOptimizer.proto
